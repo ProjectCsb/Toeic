@@ -24,7 +24,8 @@ public class DBHelper extends SQLiteOpenHelper {
             "POS text," +
             "SECTION int," +
             "NUMBEROFTIMES int," +
-            "NUMBEROFCORRECT int" +
+            "NUMBEROFCORRECT int," +
+            "ERROR real" +
             ")";
 
     /**  セクションテーブルの作成用SQL */

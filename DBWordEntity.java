@@ -18,9 +18,10 @@ public class DBWordEntity {
     private int sec;
     private int nt;
     private int nc;
+    private double ero;
 
     DBWordEntity(){
-        word = null;mean = null;pos = null;exam = null;sec = 0;nt = 0;nc = 0;
+        word = null;mean = null;pos = null;exam = null;sec = 0;nt = 0;nc = 0;ero = 0.0;
     }
 
     // 書き込みメソッド群
@@ -31,6 +32,7 @@ public class DBWordEntity {
     public void setSection(int num){sec = num;}
     public void setNumberOfTimes(int num){nt = num;}
     public void setNumberOfCorrect(int num){nc = num;}
+    public void setError(double num){ero = num;}
 
     // 読み込みメソッド群
     public String getWord(){return word;}
@@ -40,4 +42,5 @@ public class DBWordEntity {
     public int getSection(){return sec;}
     public int getNumberOfTimes(){return nt;}
     public int getNumberOfCorrect(){return nc;}
+    public double getError(){return ero;}
 }

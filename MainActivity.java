@@ -17,6 +17,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 
     private DBDAO dao;
+    private Select s;
     private LinearLayout showData;
     private LinearLayout showCorrect;
     private EditText dataEdit;
@@ -30,7 +31,7 @@ public class MainActivity extends Activity {
         DBHelper helper = new DBHelper(this, null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();
         dao = new DBDAO(db);
-
+        s = new Select(dao);
         // データ入力欄の初期設定
         dataEdit = (EditText)findViewById(R.id.dataEdit);
         dataEdit.setOnKeyListener(new AddressBarOnKeyListener());
@@ -89,13 +90,20 @@ public class MainActivity extends Activity {
                     + "： " + entity.getExam()
                     + "： " + entity.getSection()
                     + "： " + entity.getNumberOfCorrect()
-                    + "： " + entity.getNumberOfTimes());
+                    + "： " + entity.getNumberOfTimes()
+                    + "： " + entity.getError());
             showData.addView(textView);
         }
 
-        List<DBWordEntity> entity2List = dao.findAnyWord("f");
+        List<DBWordEntity> entity2List = dao.findError(0.5,false);
 
         for(DBWordEntity entity: entity2List) {
+
+        }
+
+        Questions q = new Questions();
+        q = s.AllQuestions();
+        for(DBWordEntity entity:q.getQuestion()){
             TextView text2View = new TextView(this);
             text2View.setText(entity.getWord()
                     + "： " + entity.getMean()
@@ -103,7 +111,9 @@ public class MainActivity extends Activity {
                     + "： " + entity.getExam()
                     + "： " + entity.getSection()
                     + "： " + entity.getNumberOfCorrect()
-                    + "： " + entity.getNumberOfTimes());
+                    + "： " + entity.getNumberOfTimes()
+                    + "： " + entity.getError()
+                    + "： " + q.getCorrect());
             showCorrect.addView(text2View);
         }
     }
