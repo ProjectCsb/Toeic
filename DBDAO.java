@@ -25,7 +25,6 @@ public class DBDAO {
     private static final String COLUMN_POS= "POS";
     private static final String COLUMN_NUMBEROFTIMES = "NUMBEROFTIMES";
     private static final String COLUMN_NUMBEROFCORRECT = "NUMBEROFCORRECT";
-    private static final String COLUMN_ERROR = "ERROR";
     //  セクションテーブルの列定数
     private static final String COLUMN_SECTION = "SECTION";
     private static final String COLUMN_CORRECT = "CORRECT";
@@ -60,7 +59,6 @@ public class DBDAO {
             entity.setSection(c.getInt(4));
             entity.setNumberOfTimes(c.getInt(5));
             entity.setNumberOfCorrect(c.getInt(6));
-            entity.setError(c.getDouble(7));
             entityList.add(entity);
         }
 
@@ -143,7 +141,7 @@ public class DBDAO {
 
 
     /**
-     * 正解数から単語のデータを取得   ----------------①
+     * 正解数がfind以上の単語からデータの取得   ----------------①
      * @param find 任意の整数値
      * @param flg true:任意の整数値以上のデータを読み込む false:逆
      * @return
@@ -151,34 +149,6 @@ public class DBDAO {
     public List<DBWordEntity> findCorrectWord(int find,boolean flg) {
 
         String select = COLUMN_NUMBEROFCORRECT;
-        if(flg){
-            select += ">?";
-        }else{
-            select += "<?";
-        }
-
-        String[] selectArg = {String.valueOf(find)};
-        Cursor cursor = db.query(
-                TABLE_NAME_WORD,
-                null,
-                select,
-                selectArg,
-                null,
-                null,
-                null);
-
-        return inputWordEntity(cursor);
-    }
-
-    /**
-     * 誤差率から単語のデータを取得   ----------------①
-     * @param find 任意の実数値
-     * @param flg true:任意の実数値以上のデータを読み込む false:逆
-     * @return
-     */
-    public List<DBWordEntity> findError(double find,boolean flg) {
-
-        String select = COLUMN_ERROR;
         if(flg){
             select += ">?";
         }else{
@@ -282,22 +252,6 @@ public class DBDAO {
     }
 
     /**
-     * 単語テーブル上の”回答数”を更新する
-     * @param str 更新する単語
-     * @param num 更新する数値
-     */
-
-    public void updateError(String str,double num){
-
-        String select = COLUMN_WORD + " = " +"'"+ str+"'";
-
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_ERROR,num);
-
-        db.update(TABLE_NAME_WORD,values,select,null);
-    }
-
-    /**
      * セクションテーブル上の”正解数”を更新する
      * @param sec 更新するセクション
      * @param num 更新する数値
@@ -351,7 +305,6 @@ public class DBDAO {
         values.put(COLUMN_EXAMPLE,"exam");
         values.put(COLUMN_MEAN,"mean");
         values.put(COLUMN_POS,"pos");
-        values.put(COLUMN_ERROR,r.nextDouble());
 
         db.insert(TABLE_NAME_WORD,null,values);
 
