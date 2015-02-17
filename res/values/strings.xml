@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">VocabulatyTest</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="necessary_to_input">necessary</string>
+    <string name="example_text">例文</string>
+    <string name="jap_correct_count">正解数</string>
+    <string name="jap_previous">前回: </string>
+    <string name="jap_max_correct">最高: </string>
+
+</resources>

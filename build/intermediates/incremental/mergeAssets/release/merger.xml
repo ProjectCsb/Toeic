@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="C:\Users\yoshida keisuke\c0de\VocabulatyTest\assets"><file name="data.csv" path="C:\Users\yoshida keisuke\c0de\VocabulatyTest\assets\data.csv"/><file name="toeic_data" path="C:\Users\yoshida keisuke\c0de\VocabulatyTest\assets\toeic_data"/></source></dataSet><dataSet config="release"><source path="C:\Users\yoshida keisuke\c0de\VocabulatyTest\build-types\release\assets"/></dataSet></merger>

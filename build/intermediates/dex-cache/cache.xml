@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\yoshida keisuke\c0de\VocabulatyTest\libs\android-support-v4.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="ded9acc6a9792b8f1afc470f0c9cd36d178914cd">
+        <dex dex="C:\Users\yoshida keisuke\c0de\VocabulatyTest\build\intermediates\pre-dexed\debug\android-support-v4-e496cf42163d77ed68da30fe845cbf1e4505fc21.jar" />
+    </item>
+
+</items>

@@ -1,4 +1,4 @@
-package com.example.kinpira.sqtest;
+package com.example.vocabulalytest.database;
 
 /**
  * Created by kinpira on 2015/02/05.
@@ -27,5 +27,5 @@ public class DBSectionEntity {
     // 読み込みメソッド群
     public int getSection(){return sec;}
     public int getCorrect(){return cor;}
-    public double getMaxCorrect(){return mcor;}
+    public int getMaxCorrect(){return mcor;}
 }
